@@ -1,6 +1,6 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from app.models.enums import Status, PositionEnum
-
+from typing import Optional, List
 
 class EmployeeCreate(BaseModel):
     last_name: str
@@ -11,10 +11,16 @@ class EmployeeCreate(BaseModel):
 class EmployeeRead(BaseModel):
     id: int
     last_name: str
-    first_name:str
+    first_name: str
     patronymic: str
     position: PositionEnum
     status: Status
 
-    class Config:
-        orm_mode: True
+    model_config = ConfigDict(from_attributes=True)
+
+class EmployeeUpdate(BaseModel):
+    last_name: Optional[str] = None
+    first_name: Optional[str] = None
+    patronymic: Optional[str] = None
+    position: Optional[PositionEnum] = None
+    status: Optional[Status] = None
