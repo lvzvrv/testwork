@@ -1,6 +1,6 @@
 from pydantic import BaseModel, ConfigDict
 from app.models.enums import Status, PositionEnum
-from typing import Optional, List
+from typing import Optional
 
 class EmployeeCreate(BaseModel):
     last_name: str

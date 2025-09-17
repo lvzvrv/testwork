@@ -50,7 +50,6 @@ async def get_statistics(session: AsyncSession = Depends(get_session)):
 @router.get("/employee/{employee_id}", response_model=List[StatisticRead])
 async def get_statistics_by_employee(employee_id: int, session: AsyncSession = Depends(get_session)):
     try:
-        # Проверяем существование сотрудника
         employee = await session.get(Employee, employee_id)
         if not employee:
             raise HTTPException(status_code=404, detail="Employee not found")

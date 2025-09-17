@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, Float, Enum, String
-from sqlalchemy.sql.cache_key import CACHE_IN_PLACE
+
 
 from app.db.base import Base
 from app.models.enums import Parameter, CoefficientType

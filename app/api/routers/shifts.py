@@ -14,12 +14,10 @@ router = APIRouter()
 @router.post("/start", response_model=ShiftRead)
 async def start_shift(shift_data: ShiftCreate, session: AsyncSession = Depends(get_session)):
     try:
-        # Проверяем существование сотрудника
         employee = await session.get(Employee, shift_data.employee_id)
         if not employee:
             raise HTTPException(status_code=404, detail="Employee not found")
 
-        # Проверяем, есть ли у сотрудника активная смена
         active_shift_result = await session.execute(
             select(Shift).where(
                 Shift.employee_id == shift_data.employee_id,
@@ -34,7 +32,6 @@ async def start_shift(shift_data: ShiftCreate, session: AsyncSession = Depends(g
                 detail="Employee already has an active shift"
             )
 
-        # Создаем новую смену
         shift = Shift(
             employee_id=shift_data.employee_id,
             start_datetime=datetime.now(timezone.utc)

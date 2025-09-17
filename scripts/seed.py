@@ -3,7 +3,6 @@ import os
 import asyncio
 from datetime import datetime, timedelta, timezone
 
-# Добавляем корневую директорию проекта в Python path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from app.db.session import engine, AsyncSessionLocal

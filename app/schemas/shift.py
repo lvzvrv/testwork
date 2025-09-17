@@ -1,7 +1,6 @@
 from pydantic import BaseModel, ConfigDict
 from datetime import datetime
 from typing import Optional
-from app.models.enums import PositionEnum, Status
 
 class ShiftBase(BaseModel):
     employee_id: int
