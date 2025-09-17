@@ -6,5 +6,5 @@ class Shift(Base):
     __tablename__ = 'shifts'
     id = Column(Integer, primary_key=True, index=True)
     start_datetime = Column(DateTime(timezone=True), nullable=False)
-    end_datetime = Column(DateTime(timezone=True), nullable=False)
+    end_datetime = Column(DateTime(timezone=True), nullable=True)
     employee_id = Column(Integer, ForeignKey('employees.id'), nullable=False)
